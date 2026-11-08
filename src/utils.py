@@ -1,3 +1,6 @@
+import os
+import subprocess
+
 ACENTOS = {
     "á": "a",
     "à": "a",
@@ -20,3 +23,7 @@ def normalizar(texto):
     for sinal in "?!.,;:()":
         texto = texto.replace(sinal, " ")
     return " " + " ".join(texto.split()) + " "
+
+def apagar_terminal():
+    input('Aperte qualquer botão para continuar.')
+    subprocess.run(["cls" if os.name == "nt" else "clear"])
