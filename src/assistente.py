@@ -13,6 +13,7 @@ class Assistente():
         self.base = base
         self.historico = []
         self.notas_sessao = []
+        self.perguntas_sem_solucao_sessao = []
         
     def menu(self):
         while True:
@@ -59,7 +60,7 @@ class Assistente():
     def perguntar(self):        
         padrao_cpf_ou_telefone = r"(\b\d{3}[\.\s-]?\d{3}[\.\s-]?\d{3}[\.\s-]?\d{2}\b)|(\b(?:\+?55\s*)?(?:\(\d{2}\)|\d{2})[\s.-]?\d{4,5}[\s.-]?\d{4}\b)"
         while True:
-            pergunta = input('Digite a sua dúvida: ')
+            pergunta = input('Digite a sua dúvida: ').strip()
             if re.search(padrao_cpf_ou_telefone, pergunta) or '@' in pergunta:
                 print('Atenção: não digite CPF, telefone ou e-mail. Reescreva.')
                 apagar_terminal()
@@ -75,6 +76,7 @@ class Assistente():
         
         if not resultados:
             print('Não encontrei. Tente navegar pelas categorias.')
+            self.perguntas_sem_solucao_sessao.append(pergunta)
             self.registrar(pergunta, 'pergunta', 'N/A', 'nao', 'nao', 1, tempo)
             apagar_terminal()
             return 
@@ -87,13 +89,16 @@ class Assistente():
             print('Confiança MÉDIA')
         else: 
             print('Confiança BAIXA. Não encontrei uma resposta exata.')
+            self.perguntas_sem_solucao_sessao.append(pergunta)
             self.registrar(pergunta, 'pergunta', 'N/A', 'nao', 'nao', 1, tempo)
+            apagar_terminal()
             return
         orientacao.exibir()
         
         ajudou = input('Essa orientação respondeu sua dúvida? (s/n): ').lower()
         while ajudou not in ['s', 'n']:
             ajudou = input('Digite apenas s ou n: ').lower()
+        apagar_terminal()
             
         self.registrar(
             pergunta=pergunta,
@@ -216,7 +221,7 @@ class Assistente():
         
     def indicadores(self):
         try:
-            with open('data/historico.csv', 'r') as historico: 
+            with open('data/historico.csv', 'r', encoding='utf-8') as historico: 
                 registros = list(csv.DictReader(historico, delimiter=';'))
         except FileNotFoundError:
             print('Arquivo histórico não encontrado. Entre em contato com o suporte.')
@@ -239,6 +244,7 @@ class Assistente():
         tempo_total = 0
         cont_tentativas = 0
         perguntas_sem_solucao = []
+        perguntas_sem_solucao_sessao =  self.perguntas_sem_solucao_sessao
         for registro in registros:
             total_perguntas += 1
             tempo_total += float(registro['tempo'])
@@ -271,7 +277,7 @@ class Assistente():
             tempo_medio,
             tentativas_por_atendimento,
             facilidade_uso,
-            perguntas_sem_solucao
+            perguntas_sem_solucao_sessao
         ]
         
         return relatorio
