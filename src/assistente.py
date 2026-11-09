@@ -33,30 +33,28 @@ class Assistente():
                 print('Atenção: opção inválida! Tente novamente.')
                 apagar_terminal()
                 continue
-            else:
-                break
-            
-        match escolha:
-            case 0:
-                print('Saindo do sistema!')
-                try:
-                    nota = int(input('\nComo você pontua a facilidade do programa? De 1 a 5: '))
-                    if 1 <= nota <= 5:
-                        self.notas_sessao.append(nota)
-                        self.salvar_nota(nota)
-                    else:
+
+            match escolha:
+                case 0:
+                    print('Saindo do sistema!')
+                    try:
+                        nota = int(input('\nComo você pontua a facilidade do programa? De 1 a 5: '))
+                        if 1 <= nota <= 5:
+                            self.notas_sessao.append(nota)
+                            self.salvar_nota(nota)
+                        else:
+                            self.notas_sessao.append(0)
+                            self.salvar_nota(0)
+                    except ValueError:
                         self.notas_sessao.append(0)
                         self.salvar_nota(0)
-                except ValueError:
-                    self.notas_sessao.append(0)
-                    self.salvar_nota(0)
-                print('Obrigado pelo retorno!')
-                time.sleep(2)
-                sys.exit()
-            case 1:
-                self.perguntar()
-            case 2:
-                self.navegar()
+                    print('Obrigado pelo retorno!')
+                    time.sleep(2)
+                    sys.exit()
+                case 1:
+                    self.perguntar()
+                case 2:
+                    self.navegar()
     
     def perguntar(self):        
         padrao_cpf_ou_telefone = r"(\b\d{3}[\.\s-]?\d{3}[\.\s-]?\d{3}[\.\s-]?\d{2}\b)|(\b(?:\+?55\s*)?(?:\(\d{2}\)|\d{2})[\s.-]?\d{4,5}[\s.-]?\d{4}\b)"
@@ -122,6 +120,8 @@ class Assistente():
             try:
                 id_categoria_escolhida = int(input('\nDigite a categoria desejada: '))
                 if id_categoria_escolhida == 0:
+                    print('Retornando ao menu.')
+                    apagar_terminal()
                     return
                 elif id_categoria_escolhida not in opcoes_possiveis:
                     print('\nAviso: Digite uma valor dentro da sequência!')
@@ -153,6 +153,8 @@ class Assistente():
                 opcao_escolhida = input('\nDigite a opção desejada: ')
             
             if opcao_escolhida == '0': 
+                print('Retornando.')
+                apagar_terminal()
                 return
             try: 
                 opcao = int(opcao_escolhida)
