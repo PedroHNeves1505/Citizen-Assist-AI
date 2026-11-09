@@ -1,6 +1,6 @@
 import csv
-from utils import normalizar
-from orientacao import Orientacao
+from .utils import normalizar
+from .orientacao import Orientacao
 class BaseConhecimento():
     def __init__(self, caminho):
         self.caminho = caminho

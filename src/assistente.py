@@ -1,11 +1,11 @@
 import re
-from base_conhecimento import BaseConhecimento
-from utils import apagar_terminal
+from .base_conhecimento import BaseConhecimento
+from .utils import apagar_terminal
 import sys
 import time
 import csv
 import os
-from orientacao import Orientacao
+from .orientacao import Orientacao
 
 class Assistente():
     def __init__(self, nome, base):
