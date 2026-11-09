@@ -37,13 +37,19 @@ class BaseConhecimento():
         return self.orientacoes
     
     def categorias(self):
-        categorias = [orientacao.categoria for orientacao in self.orientacoes]
-        return sorted(set(categorias))
+        lista_categorias = []
+        for orientacao in self.orientacoes:
+            categorias_orientacao = [categoria.strip() for categoria in orientacao.categoria.split('|')]
+            for categoria in categorias_orientacao:
+                if categoria not in lista_categorias:
+                    lista_categorias.append(categoria)
+        return sorted(lista_categorias)
         
     def por_categoria(self, categoria_escolhida):
         orientacoes_selecionadas = []
         for orientacao in self.orientacoes:
-            if orientacao.categoria.lower() == categoria_escolhida.lower():
+            categorias_orientacao = [categoria.strip().lower() for categoria in orientacao.categoria.split('|')]
+            if categoria_escolhida.lower() in categorias_orientacao.lower():
                 orientacoes_selecionadas.append(orientacao)
         return orientacoes_selecionadas
                 
