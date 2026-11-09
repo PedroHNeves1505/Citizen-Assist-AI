@@ -49,7 +49,7 @@ class BaseConhecimento():
         orientacoes_selecionadas = []
         for orientacao in self.orientacoes:
             categorias_orientacao = [categoria.strip().lower() for categoria in orientacao.categoria.split('|')]
-            if categoria_escolhida.lower() in categorias_orientacao.lower():
+            if categoria_escolhida.lower() in categorias_orientacao:
                 orientacoes_selecionadas.append(orientacao)
         return orientacoes_selecionadas
                 
