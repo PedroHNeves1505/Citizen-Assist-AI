@@ -62,19 +62,61 @@ class BaseConhecimento():
         for orientacao in self.orientacoes:
             pontos = 0
 
-            palavras_chave_limpas = [p.strip() for p in normalizar(orientacao.palavras_chave).split("|")]
+            palavras_chave_limpas = [palavra.strip() for palavra in normalizar(orientacao.palavras_chave).split("|")]
             for palavra in palavras_chave_limpas:
-                if len(palavra) >= 3 and palavra in pergunta_lista:
+                if len(palavra) < 3:
+                    continue
+
+                if palavra in pergunta_lista:
                     pontos += 3
-                    
+                    continue
+
+                if len(palavra) >= 4:
+                    for word in pergunta_lista:
+                        if len(word) < 4:
+                            continue
+
+                        prefixo = 0
+                        for p1, p2 in zip(palavra, word):
+                            if p1 == p2:
+                                prefixo += 1
+                            else:
+                                break
+                        if prefixo >= 4:
+                            pontos += 2
+                            break
+
+                        if palavra in word or word in palavra:
+                            pontos += 1
+                            break
+
             titulo_limpo = normalizar(orientacao.titulo).split()
-            for palavra in titulo_limpo:
-                if len(palavra) >= 4 and palavra in pergunta_lista:
+            for palavra_titulo in titulo_limpo:
+                if len(palavra_titulo) < 4:
+                    continue
+
+                if palavra_titulo in pergunta_lista:
                     pontos += 1
-                    
+                    continue
+
+                for palavra_pergunta in pergunta_lista:
+                    if len(palavra_pergunta) < 4:
+                        continue
+                    prefixo = 0
+                    for p1, p2 in zip(palavra_titulo, palavra_pergunta):
+                        if p1 == p2:
+                            prefixo += 1
+                        else:
+                            break
+                    if prefixo >= 4:
+                        pontos += 0.5
+                        break
+                    if palavra_titulo in palavra_pergunta or palavra_pergunta in palavra_titulo:
+                        pontos += 0.5
+                        break
+
             if pontos > 0:
                 resultados.append((pontos, orientacao))
-                
+
         resultados.sort(key=lambda x: x[0], reverse=True)
-        
         return resultados
