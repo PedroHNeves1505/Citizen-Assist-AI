@@ -1,11 +1,12 @@
 import re
 from .base_conhecimento import BaseConhecimento
-from .utils import apagar_terminal
+from .utils import apagar_terminal, normalizar
 import sys
 import time
 import csv
 import os
 from .orientacao import Orientacao
+from .modulo_decisao import ModuloDecisao
 
 class Assistente():
     def __init__(self, nome, base):
@@ -94,6 +95,7 @@ class Assistente():
             apagar_terminal()
             return
         orientacao.exibir()
+        self.oferecer_verificacao_elegibilidade(orientacao)
         
         ajudou = input('Essa orientação respondeu sua dúvida? (s/n): ').lower()
         while ajudou not in ['s', 'n']:
@@ -167,6 +169,7 @@ class Assistente():
                     tempo = round(time.time() - inicio, 1)
                     self.registrar('Acesso por categoria', 'categoria', lista[opcao-1].id_orientacao, 'sim', 'sim', 1, 0)
                     lista[opcao-1].exibir()
+                    self.oferecer_verificacao_elegibilidade(lista[opcao-1])
                     ajudou = input('Essa orientação respondeu sua dúvida? (s/n): ').lower()
                     while ajudou not in ['s', 'n']:
                         ajudou = input('Digite apenas s ou n: ').lower()
@@ -290,3 +293,30 @@ class Assistente():
             if not arquivo_existe:
                 escritor.writerow(['data', 'nota'])
             escritor.writerow([time.strftime('%Y-%m-%d %H:%M:%S'), nota])
+    
+    def oferecer_verificacao_elegibilidade(self, orientacao):
+        if not orientacao.expressao_booleana:
+            return
+        
+        print()
+        resposta = input(f'Deseja verificar se você tem direito a este benefício? (sim ou não): ').lower()
+        resposta = normalizar(resposta).strip()
+        while resposta not in ['sim', 'nao']:
+            resposta = input('Digite apenas sim ou não: ').lower()
+            resposta = normalizar(resposta).strip()
+        
+        if resposta == 'sim':
+            modulo = ModuloDecisao(orientacao)
+            resultado = modulo.executar_interativo()
+            
+            self.registrar(
+                pergunta=f'Verificação de elegibilidade: {orientacao.titulo}',
+                origem='modulo_decisao',
+                id_orientacao=orientacao.id_orientacao,
+                encontrou='sim',
+                ajudou='sim' if resultado == 1 else 'nao',
+                tentativa=1,
+                tempo=0
+            )
+        
+            apagar_terminal()

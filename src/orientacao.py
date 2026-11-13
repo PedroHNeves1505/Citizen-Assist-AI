@@ -1,5 +1,5 @@
 class Orientacao():
-    def __init__(self, id_orientacao:int, categoria:str, titulo:str, palavras_chave:str, resposta:str, documentos:str, onde:str, fonte:str, verificado_em:str):
+    def __init__(self, id_orientacao:int, categoria:str, titulo:str, palavras_chave:str, resposta:str, documentos:str, onde:str, fonte:str, verificado_em:str, expressao_booleana:str):
         self.id_orientacao = id_orientacao
         self.categoria = categoria
         self.titulo = titulo
@@ -9,6 +9,7 @@ class Orientacao():
         self.onde = onde
         self.fonte = fonte
         self.verificado_em = verificado_em
+        self.expressao_booleana = expressao_booleana
     
     def exibir(self):
         print('-' * 40)

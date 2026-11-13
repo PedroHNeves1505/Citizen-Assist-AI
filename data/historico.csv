@@ -5,3 +5,11 @@ data;origem;pergunta;id_orientacao;encontrou;ajudou;tentativa;tempo
 2026-11-09 20:13:24;pergunta;;N/A;nao;nao;1;0.0
 2026-11-09 20:13:36;categoria;Acesso por categoria;3;sim;sim;1;0
 2026-11-09 20:13:39;categoria;Navegação por categoria: Documentação -> como tirar o cartao sus (cns);3;sim;s;1;5.1
+2026-11-12 21:47:41;pergunta;;N/A;nao;nao;1;0.0
+2026-11-12 21:54:47;modulo_decisao;Verificação de elegibilidade: como tirar o cartao sus (cns);3;sim;sim;1;0
+2026-11-12 21:56:01;modulo_decisao;Verificação de elegibilidade: gratuidade no transporte publico urbano;2;sim;sim;1;0
+2026-11-12 21:56:10;categoria;Tenho direito a transporte publico gratuito?;2;sim;s;1;0.0
+2026-11-12 21:56:17;categoria;Acesso por categoria;6;sim;sim;1;0
+2026-11-12 21:56:31;modulo_decisao;Verificação de elegibilidade: bpc - beneficio de prestacao continuada;6;sim;nao;1;0
+2026-11-12 21:56:41;categoria;Navegação por categoria: Assistência Social -> bpc - beneficio de prestacao continuada;6;sim;s;1;1.5
+2026-11-12 22:01:13;modulo_decisao;Verificação de elegibilidade: como tirar o cartao sus (cns);3;sim;sim;1;0

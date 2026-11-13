@@ -1,4 +1,4 @@
-from utils import normalizar
+from .utils import normalizar
 
 class ModuloDecisao():
     def __init__(self, orientacao_atual):
@@ -19,6 +19,8 @@ class ModuloDecisao():
         operadores = {'and', 'or', 'not', '(', ')'}
         for item in self.expressao_dividida:
             if item not in operadores and item not in self.variaveis:
+                if item in operadores or item.isdigit():
+                    continue
                 self.variaveis.append(item)
         return self.variaveis
                 
@@ -53,4 +55,27 @@ class ModuloDecisao():
         except Exception as e:
             print(f'ERRO: {e}')
         return self.resolucao
+
+    def executar_interativo(self):
+        print("\n" + "-" * 50)
+        print("MÓDULO DE DECISÃO")
+        print("-" * 50)
+
+        self.obter_expressao_booleana()
+        self.obter_variaveis()
+        self.receber_valores_variaveis()
+        self.substituir_variavel_por_valor()
+        resultado = self.resolver_expressao()
         
+        print("\n" + "=" * 50)
+        if resultado == 1:
+            print("RESULTADO: Você PODE solicitar este benefício.")
+        elif resultado == 0:
+            print("RESULTADO: Você NÃO é elegível para este benefício.")
+            print("\nInfelizmente, você não atende a todos os critérios.")
+        else:
+            print("Não foi possível calcular o resultado.")
+        print("\nAviso: este assistente NÃO é um canal oficial.")
+        print("=" * 50)
+
+        return resultado

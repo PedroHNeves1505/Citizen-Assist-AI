@@ -28,6 +28,7 @@ class BaseConhecimento():
                         linha.get('onde', 'Nao informado'),
                         linha.get('fonte', 'Sem Fonte'),
                         linha.get('verificado_em', 'Sem Data'),
+                        linha.get('expressao_booleana', 'Sem expressão').strip(),
                     )
                     self.orientacoes.append(orientacao)
         except FileNotFoundError:
