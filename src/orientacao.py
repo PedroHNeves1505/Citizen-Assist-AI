@@ -1,5 +1,5 @@
 class Orientacao():
-    def __init__(self, id_orientacao:int, categoria:str, titulo:str, palavras_chave:str, resposta:str, documentos:str, onde:str, fonte:str, verificado_em:str, expressao_booleana:str):
+    def __init__(self, id_orientacao, categoria, titulo, palavras_chave, resposta, documentos, onde, fonte, verificado_em, expressao_booleana=""):
         self.id_orientacao = id_orientacao
         self.categoria = categoria
         self.titulo = titulo
@@ -10,18 +10,20 @@ class Orientacao():
         self.fonte = fonte
         self.verificado_em = verificado_em
         self.expressao_booleana = expressao_booleana
-    
+
     def exibir(self):
-        print('-' * 40)
-        print(f'\n{self.titulo} [{self.categoria}]')
-        print(self.resposta)
-        print('Documentos Necessários:')
-        if self.documentos:
+        print('-' * 50)
+        print(f'>> {self.titulo} [{self.categoria}]')
+        print(f'\n{self.resposta}')
+
+        print('\nDocumentos Necessários:')
+        if self.documentos and self.documentos.strip():
             for documento in str(self.documentos).split('|'):
                 print(f' - {documento.strip()}')
         else:
-            print(' - Nenhum Documento Necessário')
-        print(f'Onde: {self.onde}')
-        print(f'Fonte: {self.fonte} | verificado em: {self.verificado_em}\n')
-        print('Aviso: este assistente NÃO é um canal oficial!\n')
-        print('-' * 40)
+            print(' - Nenhum documento necessário.')
+
+        print(f'\nOnde: {self.onde}')
+        print(f'Fonte: {self.fonte} | Verificado em: {self.verificado_em}')
+        print('\nAviso: este assistente NÃO é um canal oficial!')
+        print('-' * 50 + '\n')
