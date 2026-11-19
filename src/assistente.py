@@ -7,6 +7,7 @@ import os
 from .modulo_decisao import ModuloDecisao
 from .gerenciador_orientacoes import GerenciadorOrientacoes
 from .auth import fazer_login
+from .fila_virtual import exibir_status_fila
 
 class Assistente():
     def __init__(self, nome, base):
@@ -28,16 +29,17 @@ class Assistente():
             print('3. Pesquisar orientação (escolher palavra-chave)')
             print('4. Ordenar orientações')
             print('5. Listar todas as orientações')
+            print('6. Consultar fila virtual)')
             if self.logado:
-                print('6. Cadastrar orientação')
-                print('7. Consultar orientação por ID')
-                print('8. Atualizar orientação')
-                print('9. Excluir orientação')
-                print('10. Logout')
+                print('7. Cadastrar orientação')
+                print('8. Consultar orientação por ID')
+                print('9. Atualizar orientação')
+                print('10. Excluir orientação')
+                print('11. Logout')
                 opcoes_validas = list(range(0, 11))
             else:
-                print('6. Acesso restrito (login)')
-                opcoes_validas = [0, 1, 2, 3, 4, 5, 6]
+                print('7. Acesso restrito (login)')
+                opcoes_validas = [0, 1, 2, 3, 4, 5, 6, 7]
             print('\n0. Sair')
             print('-' * 50)
 
@@ -85,7 +87,10 @@ class Assistente():
                 case 5:
                     self.gerenciador.listar()
                     apagar_terminal()
-                case 6:
+                case 6: 
+                    exibir_status_fila()
+                    apagar_terminal()
+                case 7:
                     if self.logado:
                         self.gerenciador.cadastrar()
                         self.base.carregar()
@@ -95,18 +100,18 @@ class Assistente():
                             self.logado = True
                         time.sleep(1)
                         apagar_terminal()
-                case 7:
+                case 8:
                     self.gerenciador.consultar()
                     apagar_terminal()
-                case 8:
+                case 9:
                     self.gerenciador.atualizar()
                     self.base.carregar()
                     apagar_terminal()
-                case 9:
+                case 10:
                     self.gerenciador.excluir()
                     self.base.carregar()
                     apagar_terminal()
-                case 10:
+                case 11:
                     self.logado = False
                     time.sleep(1)
                     apagar_terminal()
