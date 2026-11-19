@@ -8,6 +8,7 @@ from .modulo_decisao import ModuloDecisao
 from .gerenciador_orientacoes import GerenciadorOrientacoes
 from .auth import fazer_login
 from .fila_virtual import exibir_status_fila
+from .modelagem_urbana import exibir_distribuicao, consultar_regiao
 
 class Assistente():
     def __init__(self, nome, base):
@@ -29,17 +30,19 @@ class Assistente():
             print('3. Pesquisar orientação (escolher palavra-chave)')
             print('4. Ordenar orientações')
             print('5. Listar todas as orientações')
-            print('6. Consultar fila virtual)')
+            print('6. Consultar fila virtual')
+            print('7. Consultar consumo de energia')
+            print('8. Consultar distribuição de ônibus')
             if self.logado:
-                print('7. Cadastrar orientação')
-                print('8. Consultar orientação por ID')
-                print('9. Atualizar orientação')
-                print('10. Excluir orientação')
-                print('11. Logout')
+                print('9. Cadastrar orientação')
+                print('10. Consultar orientação por ID')
+                print('11. Atualizar orientação')
+                print('12. Excluir orientação')
+                print('13. Logout')
                 opcoes_validas = list(range(0, 11))
             else:
-                print('7. Acesso restrito (login)')
-                opcoes_validas = [0, 1, 2, 3, 4, 5, 6, 7]
+                print('9. Acesso restrito (login)')
+                opcoes_validas = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
             print('\n0. Sair')
             print('-' * 50)
 
@@ -91,6 +94,21 @@ class Assistente():
                     exibir_status_fila()
                     apagar_terminal()
                 case 7:
+                    self.gerenciador.consultar()
+                    apagar_terminal()
+                case 8:
+                        print("\n1) Ver todas as regiões")
+                        print("2) Consultar uma região específica")
+                        sub = input("Escolha: ").strip()
+                        if sub == '1':
+                            exibir_distribuicao()
+                        elif sub == '2':
+                            regiao = input("Qual região? (Norte/Sul/Leste/Oeste): ")
+                            consultar_regiao(regiao)
+                        else:
+                            print("Opção inválida.")
+                        apagar_terminal()
+                case 9:
                     if self.logado:
                         self.gerenciador.cadastrar()
                         self.base.carregar()
@@ -100,18 +118,15 @@ class Assistente():
                             self.logado = True
                         time.sleep(1)
                         apagar_terminal()
-                case 8:
-                    self.gerenciador.consultar()
-                    apagar_terminal()
-                case 9:
+                case 10:
                     self.gerenciador.atualizar()
                     self.base.carregar()
                     apagar_terminal()
-                case 10:
+                case 11:
                     self.gerenciador.excluir()
                     self.base.carregar()
                     apagar_terminal()
-                case 11:
+                case 12:
                     self.logado = False
                     time.sleep(1)
                     apagar_terminal()
