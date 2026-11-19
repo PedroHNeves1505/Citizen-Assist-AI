@@ -1,0 +1,25 @@
+atendimento 1 pessoa_de_fora{
+    data;origem;pergunta;id_orientacao;encontrou;ajudou;tentativa;tempo
+    2026-11-09 20:12:35;categoria;Como tirar o cartão do SUS?;3;sim;s;1;0.0
+    2026-11-09 20:12:50;categoria;Como faço a carteirinha do SUS?;3;sim;s;1;0.0
+    2026-11-09 20:13:00;pergunta;Qual a cor do céu?;N/A;nao;nao;1;0.0
+    2026-11-09 20:13:24;pergunta;;N/A;nao;nao;1;0.0
+    2026-11-09 20:13:36;categoria;Acesso por categoria;3;sim;sim;1;0
+    2026-11-09 20:13:39;categoria;Navegação por categoria: Documentação -> como tirar o cartao sus (cns);3;sim;s;1;5.1
+}
+
+atendimento 2 pessoa_de_fora{
+    2026-11-12 21:54:47;modulo_decisao;Verificação de elegibilidade: como tirar o cartao sus (cns);3;sim;sim;1;0
+    2026-11-12 21:56:01;modulo_decisao;Verificação de elegibilidade: gratuidade no transporte publico urbano;2;sim;sim;1;0
+    2026-11-12 21:56:10;categoria;Tenho direito a transporte publico gratuito?;2;sim;s;1;0.0
+    2026-11-12 21:56:17;categoria;Acesso por categoria;6;sim;sim;1;0
+    2026-11-12 21:56:31;modulo_decisao;Verificação de elegibilidade: bpc - beneficio de prestacao continuada;6;sim;nao;1;0
+    2026-11-12 21:56:41;categoria;Navegação por categoria: Assistência Social -> bpc - beneficio de prestacao continuada;6;sim;s;1;1.5
+}
+
+atendimento 3 pessoa_de_fora{
+    2026-11-19 20:43:52;hibrido;Como fazer a carteira do SUS?;3;sim;pendente;1;10.3
+    2026-11-19 20:47:06;hibrido;Como fazer a carterinha do SUS?;3;sim;pendente;1;2.3
+    2026-11-19 20:47:28;modulo_decisao;Elegibilidade: como tirar o cartao sus (cns);3;sim;sim;1;0
+    2026-11-19 20:54:57;hibrido;Quais documento posso ter após ter feito 65 anos?;20;sim;pendente;1;18.4
+}
