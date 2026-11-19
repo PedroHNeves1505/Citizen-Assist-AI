@@ -1,7 +1,0 @@
-Integrantes:
-Pedro Henrique Neves - RM: 571382
-Akin Alexandre Mendes Martins - RM: 572773
-Maria Eduarda Rocha Benjamim - RM: 570554
-
-Link do Repositório GitHub:
-https://github.com/equipe31ccpj/Modelagem-Linear-GlobalSolutionCitizenAssist.git
