@@ -111,6 +111,10 @@ Essas evoluções podem contribuir para ampliar o alcance e a utilidade da propo
 - Maria Eduarda
 - 
 
+## Credenciais de teste
+Usuario: equipe 
+Senha: fiap2026
+
 ## Instituição
 
 **FIAP — Faculdade de Informática e Administração Paulista**
