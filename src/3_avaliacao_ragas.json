@@ -1,0 +1,97 @@
+{
+  "executado_em_utc": "2026-11-19T20:54:55.386686+00:00",
+  "total_perguntas": 8,
+  "status": "bloqueado_ou_pendente",
+  "motivo": "No module named 'datasets'",
+  "metricas_agregadas": null,
+  "amostras": [
+    {
+      "id": "Q1_SIMPLES",
+      "tipo": "simples",
+      "question": "[SUBSTITUA PELA PERGUNTA 1: fato direto do documento 1]",
+      "ground_truth": "[SUBSTITUA PELO GROUND TRUTH 1 ESCRITO PELO GRUPO]",
+      "contexts": [
+        "[Sem contexto recuperado]"
+      ],
+      "answer": "Resposta indisponível: LLM remoto não configurado/acessível.",
+      "doc_ids_recuperados": []
+    },
+    {
+      "id": "Q2_SIMPLES",
+      "tipo": "simples",
+      "question": "[SUBSTITUA PELA PERGUNTA 2: fato direto do documento 2]",
+      "ground_truth": "[SUBSTITUA PELO GROUND TRUTH 2 ESCRITO PELO GRUPO]",
+      "contexts": [
+        "[Sem contexto recuperado]"
+      ],
+      "answer": "Resposta indisponível: LLM remoto não configurado/acessível.",
+      "doc_ids_recuperados": []
+    },
+    {
+      "id": "Q3_SIMPLES",
+      "tipo": "simples",
+      "question": "[SUBSTITUA PELA PERGUNTA 3: detalhe escondido fora do início do texto]",
+      "ground_truth": "[SUBSTITUA PELO GROUND TRUTH 3 ESCRITO PELO GRUPO]",
+      "contexts": [
+        "[Sem contexto recuperado]"
+      ],
+      "answer": "Resposta indisponível: LLM remoto não configurado/acessível.",
+      "doc_ids_recuperados": []
+    },
+    {
+      "id": "Q4_SIMPLES",
+      "tipo": "simples",
+      "question": "[SUBSTITUA PELA PERGUNTA 4: critério, prazo ou documentação explícita]",
+      "ground_truth": "[SUBSTITUA PELO GROUND TRUTH 4 ESCRITO PELO GRUPO]",
+      "contexts": [
+        "[Sem contexto recuperado]"
+      ],
+      "answer": "Resposta indisponível: LLM remoto não configurado/acessível.",
+      "doc_ids_recuperados": []
+    },
+    {
+      "id": "Q5_ARMADILHA_CONTRADICAO",
+      "tipo": "armadilha_contradicao",
+      "question": "[SUBSTITUA PELA PERGUNTA 5: contradição entre trechos ou documentos]",
+      "ground_truth": "[SUBSTITUA PELO GROUND TRUTH 5: o que prevalece e por quê]",
+      "contexts": [
+        "[Sem contexto recuperado]"
+      ],
+      "answer": "Resposta indisponível: LLM remoto não configurado/acessível.",
+      "doc_ids_recuperados": []
+    },
+    {
+      "id": "Q6_ARMADILHA_DESATUALIZACAO",
+      "tipo": "armadilha_desatualizacao",
+      "question": "[SUBSTITUA PELA PERGUNTA 6: regra antiga/revogada vs. regra vigente]",
+      "ground_truth": "[SUBSTITUA PELO GROUND TRUTH 6: regra vigente atualizada]",
+      "contexts": [
+        "[Sem contexto recuperado]"
+      ],
+      "answer": "Resposta indisponível: LLM remoto não configurado/acessível.",
+      "doc_ids_recuperados": []
+    },
+    {
+      "id": "Q7_ARMADILHA_FAIXA_CONDICIONAL",
+      "tipo": "armadilha_faixa_condicional",
+      "question": "[SUBSTITUA PELA PERGUNTA 7: limite de faixa, valor, prazo ou exceção]",
+      "ground_truth": "[SUBSTITUA PELO GROUND TRUTH 7: condição exata e exceção aplicável]",
+      "contexts": [
+        "[Sem contexto recuperado]"
+      ],
+      "answer": "Resposta indisponível: LLM remoto não configurado/acessível.",
+      "doc_ids_recuperados": []
+    },
+    {
+      "id": "Q8_ARMADILHA_EXCECAO",
+      "tipo": "armadilha_excecao",
+      "question": "[SUBSTITUA PELA PERGUNTA 8: caso de borda / critério excludente]",
+      "ground_truth": "[SUBSTITUA PELO GROUND TRUTH 8: resposta correta considerando a exceção]",
+      "contexts": [
+        "[Sem contexto recuperado]"
+      ],
+      "answer": "Resposta indisponível: LLM remoto não configurado/acessível.",
+      "doc_ids_recuperados": []
+    }
+  ]
+}
