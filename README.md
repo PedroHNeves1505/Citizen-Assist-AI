@@ -115,6 +115,20 @@ Essas evoluções podem contribuir para ampliar o alcance e a utilidade da propo
 Usuario: equipe 
 Senha: fiap2026
 
+## Como rodar
+
+1. Execute o arquivo scripts/simular_hardware.py
+
+2. Em seguida, vai ao arquivo src/CitizenTech.ipynb
+
+3. Vai até o tópico 5. Interface Gradio
+
+4. Desça até a saida do código
+
+5. Copie o local host: http://127.0.0.1:7883
+
+6. Cole no navegador e use o sistema
+
 ## Instituição
 
 **FIAP — Faculdade de Informática e Administração Paulista**
